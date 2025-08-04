@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Heater Costs: A Guide for Winter Park Homeowners</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js for the bar chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Use the Inter font family defined in the head */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom styles for visual enhancements */
+        .gradient-text {
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-5xl px-4 py-8 sm:py-12 lg:py-16">
+
+        <!-- 1. Page Title & Headline -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                The Smart Homeowner's Guide to Water Heater Costs in <span class="gradient-text">Winter Park</span>
+            </h1>
+            <h2 class="text-xl sm:text-2xl text-slate-600 max-w-3xl mx-auto">
+                Stop overpaying. See which fuel source will save you hundreds of dollars each year.
+            </h2>
+        </header>
+
+        <!-- 2. The Main Infographic: The Vertical Bar Chart -->
+        <section class="mb-12 bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-200">
+            <h3 class="text-2xl font-bold text-slate-900 text-center mb-6">Estimated Annual Water Heating Cost</h3>
+            <div class="relative h-96 sm:h-[450px]">
+                <canvas id="waterHeaterChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 3. The Key Takeaways -->
+        <section class="mb-12">
+            <h3 class="text-3xl font-bold text-slate-900 mb-6 text-center">What This Chart Tells You in 30 Seconds</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800">Heat Pumps Offer Massive Savings</h4>
+                            <p class="text-slate-600">For homes using electricity, a heat pump isn't just a small upgrade—it can cut your water heating bill by over 65%. It's the cheapest to run, period.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                     <div class="flex items-start">
+                        <svg class="h-6 w-6 text-amber-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12" /></svg>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800">Standard Electric is a Budget Trap</h4>
+                            <p class="text-slate-600">While the heater itself is inexpensive to buy, it's a very expensive option to run long-term. You'll pay for that low upfront price many times over on your utility bills.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-blue-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5A2.25 2.25 0 0011.25 11.25H6.75A2.25 2.25 0 004.5 13.5V21M6.75 21v-7.5A2.25 2.25 0 019 11.25h1.5A2.25 2.25 0 0112.75 13.5V21m6-4.875A2.625 2.625 0 1015 13.5V21a6 6 0 00-12 0v-1.5" /></svg>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800">Natural Gas is a Solid, Affordable Choice</h4>
+                            <p class="text-slate-600">If your home has a natural gas line, it remains a reliable and cost-effective option, second only to a heat pump.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100">
+                    <div class="flex items-start">
+                        <svg class="h-6 w-6 text-red-500 mr-3 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.362-3.797z" /></svg>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800">Propane & Oil are the Most Expensive Fuels</h4>
+                            <p class="text-slate-600">If you don't have natural gas, be aware that propane and fuel oil will cost you 2-3 times more than natural gas to heat the same amount of water.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Savings Spotlight Section -->
+        <section class="mb-12 bg-green-50 border-l-4 border-green-500 p-6 sm:p-8 rounded-r-lg">
+             <div class="flex items-center">
+                <div class="flex-shrink-0 mr-6">
+                    <svg class="h-16 w-16 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0l.879-.659M7.5 14.25l.879.659c1.171.879 3.07.879 4.242 0l.879-.659M12 21a9 9 0 110-18 9 9 0 010 18z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-green-900">For Electric Homes: The Clear Winner</h3>
+                    <p class="text-green-800 text-lg mt-1">Switching from a standard electric tank to a heat pump can save you approximately <strong class="text-xl">$401 per year</strong>. That's a <strong>65% reduction</strong> in your water heating costs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Hyper-Local Context -->
+        <section class="mb-12 bg-blue-50 border-l-4 border-blue-500 p-6 sm:p-8 rounded-r-lg">
+            <h3 class="text-3xl font-bold text-slate-900 mb-6">Important Considerations for Your Home in Winter Park <span class="text-blue-600">(Altitude 9,100 ft)</span></h3>
+            <ul class="space-y-4 text-slate-700">
+                <li><strong>Our Cold Water Matters:</strong> Winter Park's tap water is significantly colder than the national average. This means every water heater has to work harder and use more energy. The dollar savings from a high-efficiency model like a heat pump or condensing gas unit are even greater here than the national average suggests.</li>
+                <li><strong>High-Altitude Performance:</strong> Gas, propane, and oil water heaters must be certified for high-altitude operation to run safely and efficiently. An improperly configured unit will waste fuel and can be dangerous. Always confirm this with your installer.</li>
+                <li><strong>Check Your Fuel Source:</strong> If you're unsure, check your utility bills. Do you pay for natural gas to "Xcel Energy," or do you have a large propane tank on your property? This is your starting point. If you only have electricity, the choice between a standard electric model and a heat pump is the most important financial decision you'll make.</li>
+                <li><strong>Look for Rebates!</strong> Colorado and local utilities often offer significant cash rebates for installing high-efficiency heat pump or condensing gas water heaters. These can lower the upfront purchase price dramatically.
+                    <a href="https://www.dsireusa.org/" target="_blank" rel="noopener noreferrer" class="inline-block mt-2 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">Search for Colorado Energy Rebates Here</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 5. The "No Bluffing" Section: Our Data -->
+        <section class="mb-12">
+            <h3 class="text-3xl font-bold text-slate-900 mb-6 text-center">Our Data Sources</h3>
+            <div class="overflow-x-auto bg-white rounded-lg shadow-md border border-slate-200">
+                <table class="w-full text-sm text-left text-slate-600">
+                    <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Fuel Type</th>
+                            <th scope="col" class="px-6 py-3">Annual Cost</th>
+                            <th scope="col" class="px-6 py-3">Monthly Cost</th>
+                            <th scope="col" class="px-6 py-3">Energy Rate Assumption</th>
+                            <th scope="col" class="px-6 py-3">Source / Verification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-slate-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">Heat Pump (Hybrid)</th>
+                            <td class="px-6 py-4">$214</td>
+                            <td class="px-6 py-4">$18</td>
+                            <td class="px-6 py-4">$0.14/kWh</td>
+                            <td class="px-6 py-4"><a href="https://www.energy.gov/energysaver/water-heating" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:underline">DOE Energy Saver</a></td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-slate-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">Natural Gas (Condensing)</th>
+                            <td class="px-6 py-4">$350</td>
+                            <td class="px-6 py-4">$29</td>
+                            <td class="px-6 py-4">$1.21/therm</td>
+                            <td class="px-6 py-4"><a href="https://www.eia.gov/dnav/ng/ng_pri_sum_dcu_SCo_a.htm" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:underline">EIA Natural Gas Prices</a></td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-slate-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">Electric (Standard Tank)</th>
+                            <td class="px-6 py-4">$615</td>
+                            <td class="px-6 py-4">$51</td>
+                            <td class="px-6 py-4">$0.14/kWh</td>
+                            <td class="px-6 py-4"><a href="https://www.energy.gov/energysaver/water-heating" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:underline">DOE Energy Saver</a></td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-slate-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">Propane</th>
+                            <td class="px-6 py-4">$950</td>
+                            <td class="px-6 py-4">$79</td>
+                            <td class="px-6 py-4">$2.50/gallon</td>
+                            <td class="px-6 py-4"><a href="https://www.eia.gov/dnav/pet/pet_pri_wfr_dcus_scol_w.htm" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:underline">EIA Propane Prices</a></td>
+                        </tr>
+                        <tr class="bg-white hover:bg-slate-50">
+                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">Fuel Oil</th>
+                            <td class="px-6 py-4">$1,100</td>
+                            <td class="px-6 py-4">$92</td>
+                            <td class="px-6 py-4">$3.80/gallon</td>
+                            <td class="px-6 py-4"><a href="https://www.eia.gov/dnav/pet/pet_pri_wfr_dcus_scol_w.htm" target="_blank" rel="noopener noreferrer" class="font-medium text-blue-600 hover:underline">EIA Heating Oil Prices</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-slate-500 mt-4 text-center">
+                <strong>Disclaimer:</strong> These figures are estimates based on 2024-2025 national average energy prices and typical household usage. Your actual costs will vary based on your family's water consumption, thermostat setting, and local utility rates. These numbers are for comparative purposes to illustrate the performance difference between fuel types.
+            </p>
+        </section>
+
+        <!-- 6. A Clear Call to Action -->
+        <section class="text-center bg-white p-8 sm:p-12 rounded-2xl shadow-xl border border-slate-200">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Ready to Make a Smart Choice?</h2>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600 mb-8">Take these three simple steps to start saving money and ensure your home has reliable hot water.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-800 mb-2">1. Check Your Current Heater</h4>
+                    <p class="text-slate-600">Go look at your water heater. Note its age, fuel type (electric, gas, etc.), and size (gallons). If it's over 10 years old, it's time to plan for a replacement.</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-800 mb-2">2. Review Your Utility Bills</h4>
+                    <p class="text-slate-600">See what you're actually paying for electricity (per kWh) or gas/propane (per therm/gallon).</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-800 mb-2">3. Consult a Local, Certified Pro</h4>
+                    <p class="text-slate-600">A qualified plumber can assess your home's specific needs, discuss high-altitude requirements, and provide an accurate quote for your Winter Park home.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // This script sets up and renders the Chart.js bar chart.
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('waterHeaterChart').getContext('2d');
+
+            // --- Chart Data ---
+            const chartData = {
+                labels: ['Heat Pump', 'Natural Gas', 'Electric Standard', 'Propane', 'Fuel Oil'],
+                annualCosts: [214, 350, 615, 950, 1100],
+                monthlyCosts: [18, 29, 51, 79, 92]
+            };
+
+            // --- Chart Configuration ---
+            const waterHeaterChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Annual Cost',
+                        data: chartData.annualCosts,
+                        backgroundColor: [
+                            'rgba(52, 211, 153, 0.7)', // green-400
+                            'rgba(59, 130, 246, 0.7)', // blue-500
+                            'rgba(245, 158, 11, 0.7)', // amber-500
+                            'rgba(239, 68, 68, 0.7)',  // red-500
+                            'rgba(107, 114, 128, 0.7)'// gray-500
+                        ],
+                        borderColor: [
+                            'rgb(52, 211, 153)',
+                            'rgb(59, 130, 246)',
+                            'rgb(245, 158, 11)',
+                            'rgb(239, 68, 68)',
+                            'rgb(107, 114, 128)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 6,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'x',
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value;
+                                },
+                                font: {
+                                    weight: '600'
+                                }
+                            },
+                            grid: {
+                                color: '#e2e8f0' // slate-200
+                            }
+                        },
+                        x: {
+                             ticks: {
+                                font: {
+                                    size: 14,
+                                    weight: '600'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // Hide the legend as the chart is self-explanatory
+                        },
+                        tooltip: {
+                            enabled: false // Disable default tooltips to show permanent labels
+                        }
+                    }
+                },
+                // Custom plugin to draw data labels and the new savings annotation.
+                plugins: [{
+                    id: 'customAnnotations',
+                    afterDatasetsDraw(chart, args, options) {
+                        const { ctx, data, chartArea: { top, bottom, left, right }, scales: { x, y } } = chart;
+                        ctx.save();
+                        
+                        const dataset = data.datasets[0];
+                        
+                        // --- 1. Draw the cost labels on each bar ---
+                        dataset.data.forEach((datapoint, index) => {
+                            const annualCost = '$' + datapoint;
+                            const monthlyCost = '$' + chartData.monthlyCosts[index] + '/mo';
+
+                            ctx.font = 'bold 16px Inter';
+                            ctx.fillStyle = '#1e293b'; // slate-800
+                            ctx.textAlign = 'center';
+                            
+                            const barX = x.getPixelForValue(index);
+                            const barY = y.getPixelForValue(datapoint);
+
+                            // Draw Annual Cost
+                            ctx.fillText(annualCost, barX, barY - 25);
+                            
+                            // Draw Monthly Cost
+                            ctx.font = '600 13px Inter';
+                            ctx.fillStyle = '#475569'; // slate-600
+                            ctx.fillText(monthlyCost, barX, barY - 8);
+                        });
+
+                        // --- 2. Draw the savings annotation ---
+                        const heatPumpIndex = data.labels.indexOf('Heat Pump');
+                        const electricStandardIndex = data.labels.indexOf('Electric Standard');
+                        
+                        const heatPumpValue = dataset.data[heatPumpIndex];
+                        const electricStandardValue = dataset.data[electricStandardIndex];
+
+                        const heatPumpX = x.getPixelForValue(heatPumpIndex);
+                        const electricStandardX = x.getPixelForValue(electricStandardIndex);
+                        
+                        // Position the annotation line above the tallest of the two bars
+                        const electricStandardY = y.getPixelForValue(electricStandardValue);
+                        const annotationY = electricStandardY - 55;
+
+                        // Draw the horizontal lin
+                        ctx.beginPath();
+                        ctx.strokeStyle = '#16a34a'; // green-600
+                        ctx.lineWidth = 2;
+                        ctx.moveTo(heatPumpX, annotationY);
+                        ctx.lineTo(electricStandardX, annotationY);
+                        ctx.stroke();
+
+                        // Draw the vertical ticks
+                        ctx.beginPath();
+                        ctx.moveTo(heatPumpX, annotationY - 5);
+                        ctx.lineTo(heatPumpX, annotationY + 5);
+                        ctx.moveTo(electricStandardX, annotationY - 5);
+                        ctx.lineTo(electricStandardX, annotationY + 5);
+                        ctx.stroke();
+
+                        // Draw the savings text
+                        const savingsText = `$${electricStandardValue - heatPumpValue} Annual Savings`;
+                        ctx.font = 'bold 16px Inter';
+                        ctx.fillStyle = '#16a34a'; // green-600
+                        ctx.textAlign = 'center';
+                        ctx.fillText(savingsText, (heatPumpX + electricStandardX) / 2, annotationY - 10);
+
+                        ctx.restore();
+                    }
+                }]
+            });
+        });
+    </script>
+
+</body>
+</html>
